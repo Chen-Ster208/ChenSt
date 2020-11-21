@@ -1,4 +1,4 @@
-package com.miLab.ex1_got;
+package com.milab.ex1_got;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,23 +14,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button starkButton = (Button)findViewbyId(R.id.stark);
-        starkButton.setOnClickListener(new View.OnClickListener(){
+        Button starkButton = (Button)findViewById(R.id.stark);
+        starkButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                Intent intent = new Intent(v.getContext(), StarkActivity.class);
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), StarkView.class);
                 startActivity(intent);
             }
         });
-        Button lannisterButton = (Button)myView.findViewbyId(R.id.lannister);
-        starkButton.setOnClickListener(new View.OnClickListener(){
+
+        Button lannisterButton = (Button)findViewById(R.id.lannister);
+        lannisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                Intent intent = new Intent(v.getContext(), LannisterActivity.class);
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), LannisterView.class);
                 startActivity(intent);
             }
         });
     }
-    
+
 
 }

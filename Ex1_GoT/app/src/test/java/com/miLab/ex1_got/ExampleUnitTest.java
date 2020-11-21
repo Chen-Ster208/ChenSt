@@ -1,4 +1,4 @@
-package com.miLab.ex1_got;
+package com.milab.ex1_got;
 
 import org.junit.Test;
 

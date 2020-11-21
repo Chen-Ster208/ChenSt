@@ -1,4 +1,4 @@
-package com.miLab.ex1_got;
+package com.milab.ex1_got;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.miLab.ex1_got", appContext.getPackageName());
+        assertEquals("com.milab.ex1_got", appContext.getPackageName());
     }
 }
