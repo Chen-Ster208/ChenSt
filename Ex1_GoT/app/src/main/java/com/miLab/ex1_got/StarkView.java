@@ -12,14 +12,17 @@ public class StarkView extends AppCompatActivity {
 
     RecyclerView recyclerView;
     private final String[] names = {"Benjen\nRIP", "Lyanna\nRIP", "Eddard\nRIP", "Catelyn\nRIP", "Rob\nRIP", "Jon Snow\nRIP(ish)", "Sansa", "Bran", "Arya", "Rickon\nRIP"};
-    private final int[] images = {R.drawable.Benjen, R.drawable.Lyanna, R.drawable.Eddard, R.drawable.Catelyn, R.drawable.Robb, R.drawable.JonSnow, R.drawable.Sansa, R.drawable.Bran, R.drawable.Arya, R.drawable.Rickon};
+    private final int[] images = {R.drawable.benjen, R.drawable.lyanna, R.drawable.eddard, R.drawable.catelyn, R.drawable.robb, R.drawable.jonsnow, R.drawable.sansa, R.drawable.bran, R.drawable.arya, R.drawable.rickon};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stark_view);
-
         recyclerView = (RecyclerView)findViewById(recycler);
+
+        StarkAdapt adapt = new StarkAdapt(this, names, images);
+
+        recyclerView.setAdapter(adapt);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 }
