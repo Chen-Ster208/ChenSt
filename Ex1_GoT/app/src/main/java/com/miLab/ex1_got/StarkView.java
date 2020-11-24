@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import static com.milab.ex1_got.R.id.recycler;
+import com.milab.ex1_got.Adapter;
 
 public class StarkView extends AppCompatActivity {
 
@@ -20,7 +21,7 @@ public class StarkView extends AppCompatActivity {
         setContentView(R.layout.activity_stark_view);
         recyclerView = (RecyclerView)findViewById(recycler);
 
-        StarkAdapt adapt = new StarkAdapt(this, names, images);
+        Adapter adapt = new Adapter(this, names, images);
 
         recyclerView.setAdapter(adapt);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

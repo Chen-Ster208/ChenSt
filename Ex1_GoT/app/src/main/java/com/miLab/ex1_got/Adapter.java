@@ -15,16 +15,16 @@ import android.widget.TextView;
 
 import static com.milab.ex1_got.R.id.recycler;
 
-public class StarkAdapt extends RecyclerView.Adapter<StarkAdapt.MyViewHolder>{
+class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder>{
 
-    private String[] starkNames;
-    private int[] starkPics;
+    private String[] characterNames;
+    private int[] characterPics;
     Context context;
 
-    public StarkAdapt(Context con, String[] names, int[] pics){
+    public Adapter(Context con, String[] names, int[] pics){
         context = con;
-        starkNames = names;
-        starkPics = pics;
+        characterNames = names;
+        characterPics = pics;
     }
 
 
@@ -39,13 +39,13 @@ public class StarkAdapt extends RecyclerView.Adapter<StarkAdapt.MyViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.text.setText(starkNames[position]);
-        holder.pic.setImageResource(starkPics[position]);
+        holder.text.setText(characterNames[position]);
+        holder.pic.setImageResource(characterPics[position]);
     }
 
     @Override
     public int getItemCount() {
-        return starkNames.length;
+        return characterNames.length;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
