@@ -1,63 +1,50 @@
 package com.milab.ex_3quote_notifier;
 
+import android.app.AlarmManager;
 import android.app.IntentService;
 import android.content.Intent;
 import android.content.Context;
 
-/**
- * An {@link IntentService} subclass for handling asynchronous task requests in
- * a service on a separate handler thread.
- * <p>
- * <p>
- * TODO: Customize class - update intent actions, extra parameters and static
- * helper methods.
- */
+
 public class MyIntentService extends IntentService {
+
+    MyReceiver myReceiver = new MyReceiver();
 
     // TODO: Rename actions, choose action names that describe tasks that this
     // IntentService can perform, e.g. ACTION_FETCH_NEW_ITEMS
-    private static final String ACTION_NOTIFY_FACT = "com.milab.ex_3quote_notifier.action.FOO";
-
-    // TODO: Rename parameters
-    private static final String EXTRA_PARAM1 = "com.milab.ex_3quote_notifier.extra.PARAM1";
-    private static final String EXTRA_PARAM2 = "com.milab.ex_3quote_notifier.extra.PARAM2";
+    private static final String ACTION_NOTIFY_FACT = "com.milab.ex_3quote_notifier.broadcast.";
+    private static final String ACTION_NOTIFICATION = "com.milab.ex_3quote_notifier.action.notify";
 
     public MyIntentService() {
         super("MyIntentService");
-    }
+        setIntentRedelivery(true);
 
-    /**
-     * Starts this service to perform action Foo with the given parameters. If
-     * the service is already performing a task this action will be queued.
-     *
-     * @see IntentService
-     */
-    // TODO: Customize helper method
-    public static void startActionFoo(Context context, String param1, String param2) {
-        Intent intent = new Intent(context, MyIntentService.class);
-        intent.setAction(ACTION_FOO);
-        intent.putExtra(EXTRA_PARAM1, param1);
-        intent.putExtra(EXTRA_PARAM2, param2);
-        context.startService(intent);
+
     }
 
     @Override
     protected void onHandleIntent(Intent intent) {
         if (intent != null) {
             final String action = intent.getAction();
-            if (ACTION_FOO.equals(action)) {
-                final String param1 = intent.getStringExtra(EXTRA_PARAM1);
-                final String param2 = intent.getStringExtra(EXTRA_PARAM2);
-                handleActionFoo(param1, param2);
+            if (ACTION_NOTIFICATION.equals(action)) {
+                handleActionNotification();
+            } else {
+                throw new RuntimeException("Unknown action provided");
             }
         }
     }
 
-    /**
-     * Handle action Foo in the provided background thread with the provided
-     * parameters.
-     */
-    private void handleActionFoo(String param1, String param2) {
-        // TODO: Handle action Foo
-        throw new UnsupportedOperationException("Not yet implemented");
+
+    private void handleActionNotification() {
+        Intent intent = new Intent();
+        intent.setAction(String.valueOf(MyReceiver.class));
+        intent.putExtra("data","My Quote");
+        sendBroadcast(intent);
+        AlarmManager myAlarm = new AlarmManager();
+        myAlarm.setInexactRepeating(AlarmManager.RTC_WAKEUP,
+                0,
+                1000*10,
+                intent);
+
     }
+}

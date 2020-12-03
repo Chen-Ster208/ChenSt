@@ -20,20 +20,24 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    public String CHANNEL_ID = "10";
+    public static String CHANNEL_ID = "MyChannel";
+//    IntentFilter myFilter;
+//    MyReceiver myReceiver = new MyReceiver();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//        myFilter = new IntentFilter(String.valueOf(MyReceiver.class));
+//        registerReceiver(myReceiver, myFilter);
+
+        createNotificationChannel();
 
         Button notify = (Button)findViewById(R.id.now_button);
         notify.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-
-                createNotificationChannel();
 
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(view.getContext(), CHANNEL_ID)
                         .setSmallIcon(R.mipmap.ic_launcher)
@@ -52,48 +56,50 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        Button startTimer = (Button)findViewById(R.id.button1);
-        notify.setOnClickListener(new View.OnClickListener() {
+        Button timerButton = (Button)findViewById(R.id.timer_button);
+        timerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent (view.getContext(), MyIntentService.class);
-
+                startService(intent);
             }
         });
     }
+
+
+
+
     private void createNotificationChannel(){
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = "someName";
-            String description = "someDescription";
-            int importance = NotificationManager.IMPORTANCE_MAX;
+            CharSequence name = "Ex3_channel";
+//            String description = "Just some description";
+            int importance = NotificationManager.IMPORTANCE_HIGH;
 
             NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
-            channel.setDescription(description);
-            // Register the channel with the system; you can't change the importance
-            // or other notification behaviors after this
+//            channel.setDescription(description);
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
     }
 
-    private void setReceiver() {
-        MyReceiver = new MyReceiver();
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(___);
+//    private void setReceiver() {
+//        MyReceiver mr = new MyReceiver();
+//        IntentFilter intentFilter = new IntentFilter();
+//        intentFilter.addAction(___);
+//
+//        LocalBroadcastManager.getInstance(this).registerReceiver(MyReceiver, intentFilter);
+//    }
 
-        LocalBroadcastManager.getInstance(this).registerReceiver(MyReceiver, intentFilter);
-    }
+//    @Override
+//    protected void onStart() {
+//        setReceiver();
+//        super.onStart();
+//    }
 
-    @Override
-    protected void onStart() {
-        setReceiver();
-        super.onStart();
-    }
-
-    @Override
-    protected void onStop() {
-        unregisterReceiver(MyReceiver);
-        super.onStop();
-    }
+//    @Override
+//    protected void onStop() {
+//        unregisterReceiver(MyReceiver);
+//        super.onStop();
+//    }
 }
