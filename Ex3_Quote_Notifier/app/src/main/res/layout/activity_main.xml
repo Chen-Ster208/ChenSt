@@ -11,22 +11,30 @@
         android:id="@+id/timer_button"
         android:layout_width="198dp"
         android:layout_height="104dp"
-        android:layout_marginBottom="124dp"
-        android:text="Start Joke Timer\n5 min"
+        android:layout_marginBottom="260dp"
+        android:text="Start 5 min\nJoke Timer"
+        android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/now_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/now_button"
         android:layout_width="198dp"
         android:layout_height="104dp"
-        android:layout_marginBottom="168dp"
+        android:layout_marginBottom="84dp"
+        android:gravity="center"
         android:text="I don't want to wait\nGive it to me"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="407dp"
+        android:layout_height="618dp"
+        app:srcCompat="@drawable/cn_backgrnd"
+        tools:layout_editor_absoluteX="-12dp"
+        tools:layout_editor_absoluteY="40dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
