@@ -29,16 +29,12 @@ import java.util.Scanner;
 public class MainActivity extends AppCompatActivity {
     public static String[] FACTS = new String[102];
     public static String CHANNEL_ID = "MyChannel";
-//    IntentFilter myFilter;
-//    MyReceiver myReceiver = new MyReceiver();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        myFilter = new IntentFilter(String.valueOf(MyReceiver.class));
-//        registerReceiver(myReceiver, myFilter);
 
         try {
             scanFacts();
@@ -88,11 +84,11 @@ public class MainActivity extends AppCompatActivity {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             CharSequence name = "Ex3_channel";
-//            String description = "Just some description";
+
             int importance = NotificationManager.IMPORTANCE_HIGH;
 
             NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
-//            channel.setDescription(description);  
+
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
@@ -109,23 +105,4 @@ public class MainActivity extends AppCompatActivity {
         }
         is.close();
     }
-//    private void setReceiver() {
-//        MyReceiver mr = new MyReceiver();
-//        IntentFilter intentFilter = new IntentFilter();
-//        intentFilter.addAction(___);
-//
-//        LocalBroadcastManager.getInstance(this).registerReceiver(MyReceiver, intentFilter);
-//    }
-
-//    @Override
-//    protected void onStart() {
-//        setReceiver();
-//        super.onStart();
-//    }
-
-//    @Override
-//    protected void onStop() {
-//        unregisterReceiver(MyReceiver);
-//        super.onStop();
-//    }
 }
