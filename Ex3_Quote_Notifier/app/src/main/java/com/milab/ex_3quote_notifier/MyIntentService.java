@@ -6,7 +6,6 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.Context;
 import android.os.SystemClock;
-import android.util.Log;
 
 
 public class MyIntentService extends IntentService {
@@ -23,14 +22,11 @@ public class MyIntentService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        Log.d(TAG, "In onHandle");
         if (intent != null) {
             final String action = intent.getAction();
                 try {
-                    Log.d(TAG, "Trying");
                     handleActionNotification();
                 } catch (PendingIntent.CanceledException e) {
-                    Log.d(TAG, "catching");
                     e.printStackTrace();
                 }
         }
