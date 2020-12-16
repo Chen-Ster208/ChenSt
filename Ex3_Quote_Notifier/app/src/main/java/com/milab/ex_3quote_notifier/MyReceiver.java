@@ -11,21 +11,20 @@ public class MyReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        int factNum = (int) (Math.random() * 102);
+        int factNum = (int) (Math.random() * MainActivity.FACTS.size());
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, MainActivity.CHANNEL_ID)
                 .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle("Did you know?")
-                .setContentText(MainActivity.FACTS[factNum])
+                .setContentTitle(MainActivity.DID_YOU_KNOW)
+                .setContentText(MainActivity.FACTS.get(factNum))
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
-                .setStyle(new NotificationCompat.BigTextStyle().bigText(MainActivity.FACTS[factNum]));
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(MainActivity.FACTS.get(factNum)));
 
         NotificationManager notiMan = (NotificationManager)context
                 .getSystemService(Context.NOTIFICATION_SERVICE);
 
         int notifyID = 1;
         notiMan.notify(notifyID, builder.build());
-
     }
 }

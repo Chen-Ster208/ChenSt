@@ -23,12 +23,14 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
 public class MainActivity extends AppCompatActivity {
-    public static String[] FACTS = new String[102];
+    public static ArrayList<String> FACTS = new ArrayList<String>();
     public static String CHANNEL_ID = "MyChannel";
+    public static final String DID_YOU_KNOW = "Did you know?";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,14 +51,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
 
-                int factNum = (int) (Math.random() * 102);
+                int factNum = (int) (Math.random() * MainActivity.FACTS.size());
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(view.getContext(), MainActivity.CHANNEL_ID)
                         .setSmallIcon(R.mipmap.ic_launcher)
-                        .setContentTitle("Did you know?")
-                        .setContentText(MainActivity.FACTS[factNum])
+                        .setContentTitle(DID_YOU_KNOW)
+                        .setContentText(MainActivity.FACTS.get(factNum))
                         .setPriority(NotificationCompat.PRIORITY_HIGH)
                         .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
-                        .setStyle(new NotificationCompat.BigTextStyle().bigText(MainActivity.FACTS[factNum]));
+                        .setStyle(new NotificationCompat.BigTextStyle().bigText(MainActivity.FACTS.get(factNum)));
 
                 NotificationManager notiMan = (NotificationManager)view.getContext()
                         .getSystemService(Context.NOTIFICATION_SERVICE);
@@ -97,11 +99,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void scanFacts() throws IOException {
-
+        String line;
         InputStream is = this.getResources().openRawResource(R.raw.facts);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-        for (int i = 0; i < 102; i++) {
-            FACTS[i] = reader.readLine();
+        while ((line = reader.readLine()) != null) {
+
+            FACTS.add(line);
         }
         is.close();
     }
