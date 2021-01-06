@@ -1,8 +1,6 @@
 const express = require('express');
 const fStream = require('fs');
 
-// const __path = 'Resources/';
-
 let app = express();
 app.use(express.static('./Resources'))
 let path = require('path');
