@@ -61,32 +61,3 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 }
-
-
-
-//                try {
-//
-//                        String url = "https://httpbin.org/ip";
-////                    10.0.2.2:3000
-//                        URL obj = new URL(url);
-//                        HttpsURLConnection connect = (HttpsURLConnection) obj.openConnection();
-//                        connect.setRequestMethod("GET");
-//
-////                    int responseCode = connect.getResponseCode();
-//                        Log.d(TAG, "Sending 'GET' request to url");
-////                    Log.d(TAG, "response code: " + responseCode);
-//
-//                        BufferedReader in = new BufferedReader(new InputStreamReader(connect.getInputStream()));
-//                        String inputLine;
-//                        StringBuffer response = new StringBuffer();
-//
-//                        while((inputLine = in.readLine()) != null){
-//                        response.append(inputLine);
-//                        }
-//                        in.close();
-//
-//                        Log.d(TAG, response.toString());
-//                        }
-//                        catch (Exception e){
-//                        e.printStackTrace();
-//                        }
