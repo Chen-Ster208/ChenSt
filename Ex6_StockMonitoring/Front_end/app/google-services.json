@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "954842092923",
+    "project_id": "stock-monitoring-b2897",
+    "storage_bucket": "stock-monitoring-b2897.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:954842092923:android:b1f663d144530efd7ed9de",
+        "android_client_info": {
+          "package_name": "com.milab.stock_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "954842092923-piltpe2elh7jir3m2okeeg4ule6flf97.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5BZz7l3idz4MJhsHBSYRUCQZOq2GPGE8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "954842092923-piltpe2elh7jir3m2okeeg4ule6flf97.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
